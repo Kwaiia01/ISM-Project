@@ -1,30 +1,31 @@
 package stock_Market;
 
 public class CouponBond extends Bond{
-	
-	private double couponRate, endPrice, faceValue, annualInterestRate, marketInterestRate;
+	String name = "";
+	private double couponRate, faceValue, marketInterestRate, currentValue;
 	private int maturityYears, couponTime;		//couponTime = compounding frequency
 
-	public CouponBond() 
+	public CouponBond(String n) 
 	{
-		couponRate = 0.09;
-		couponTime = 2;
+		couponRate = 0.08;
+		couponTime = 1;
 		faceValue = 1000;
 		marketInterestRate = 0.1;
-		maturityYears = 10;
-	}
-
-	public double yieldToMaturity() 
-	{				//yield of the bond if held to maturity
-		for(int i = 1; i < maturityYears*couponTime; i++) 
-		{		//IE $1000 bond compounding 2 times a year with $45 a coupon for 10 years gives a total of $1900 market price
-			endPrice += couponPayment(faceValue, couponRate, couponTime) / Math.pow(1 + (annualInterestRate / couponTime), i);
-		}
-		endPrice += (couponPayment(faceValue, couponRate, couponTime) + faceValue) / Math.pow(1 + (annualInterestRate / couponTime), maturityYears*couponTime);
-		return endPrice;
+		maturityYears = 12;
+		name = n;
+		currentValue = 940;
 	}
 	
-	public double bondPrice() 
+	private double yieldToMaturity() 
+	{				//yield of the bond if held to maturity
+		double ytm = 0;
+		
+		ytm = (couponPayment(faceValue, couponRate, couponTime) + (faceValue - currentValue)/12) / ( (faceValue + currentValue) / 2);
+		
+		return ytm * 100;
+	}
+	
+	private double bondPrice() 
 	{				//Expected selling price
 		double bp = 0;
 		
@@ -33,18 +34,21 @@ public class CouponBond extends Bond{
 		return bp;					
 	}
 
-	public double currentYield() 
-	{					//research needed
-		return (couponPayment(faceValue, couponRate, couponTime)*couponTime) / bondPrice()*100;
+	
+	public double getValue() {
+		return bondPrice();
 	}
+	
+	public double getYTM() {
+		return yieldToMaturity();
+	}
+	
 	
 	public String toString() 
 	{
-		return String.format("The expected selling price of the bond is: $%.2f "
-				+ "\nThe yield of the bond to maturity is: $%.2f "
-				+ "\nThe price of each coupon is: $%.2f "
-				+ "\nThe current yield of the bond is: %.2f"
-				, bondPrice(), yieldToMaturity(), couponPayment(faceValue, couponRate, couponTime), currentYield()) 
-				+ "%";
+		return String.format("\n\n" + name + "\nThe expected selling price of the bond is: $%.2f "
+				+ "\nThe price of each coupon is: $%.2f "				
+				+ "\nThe yield of the bond to maturity is: $%.2f"
+				, bondPrice(),couponPayment(faceValue, couponRate, couponTime), yieldToMaturity()) + "%";
 	}
 }
