@@ -34,7 +34,7 @@ public class Stock {
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create("https://twelve-data1.p.rapidapi.com/beta?interval=1month&symbol="
 						+ s +"&format=csv&series_type_2=close&series_type_1=open&outputsize=1"))
-				.header("X-RapidAPI-Key", "4097731f17msh4284dac54bcb157p15e638jsne1dd97ec0275")
+				.header("X-RapidAPI-Key", "XXX")
 				.header("X-RapidAPI-Host", "twelve-data1.p.rapidapi.com")
 				.method("GET", HttpRequest.BodyPublishers.noBody())
 				.build();
@@ -48,7 +48,7 @@ public class Stock {
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create("https://twelve-data1.p.rapidapi.com/stddev?interval=1month&symbol="
 						+ s + "&series_type=close&sd=2&time_period=9&format=csv&outputsize=1"))
-				.header("X-RapidAPI-Key", "4097731f17msh4284dac54bcb157p15e638jsne1dd97ec0275")
+				.header("X-RapidAPI-Key", "XXX")
 				.header("X-RapidAPI-Host", "twelve-data1.p.rapidapi.com")
 				.method("GET", HttpRequest.BodyPublishers.noBody())
 				.build();
@@ -69,7 +69,7 @@ public class Stock {
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create("https://twelve-data1.p.rapidapi.com/time_series?symbol="
 						+ s+"&interval=1day&outputsize=1&format=csv"))
-				.header("X-RapidAPI-Key", "4097731f17msh4284dac54bcb157p15e638jsne1dd97ec0275")
+				.header("X-RapidAPI-Key", "XXX")
 				.header("X-RapidAPI-Host", "twelve-data1.p.rapidapi.com")
 				.method("GET", HttpRequest.BodyPublishers.noBody())
 				.build();
