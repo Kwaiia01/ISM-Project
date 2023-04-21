@@ -2,19 +2,27 @@
  * 
  */
 package stock_Market;
-public class Main {
-	
-	/**
-	 * @param args
-	 */
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//Portfolio por = new Portfolio();
-		CorporateBond b = new CorporateBond();
-		System.out.print(b);
-		//System.out.print(	Math.pow((1 - 0.1), 0) * ( (0.1 * 600)  + ( (1-0.1) * 50 ) ) / Math.pow(1 + 0.05, 1)			);
-	}
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.swing.*;
+
+
+public class Main extends JFrame implements ActionListener{
+	
+	
+	
+	public static void main(String[] args) throws IOException, InterruptedException {
+		PortfolioCalculator p = new PortfolioCalculator();
+		p.setVisible(true);
+		
+		
+    }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
