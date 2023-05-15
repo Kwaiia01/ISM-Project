@@ -26,7 +26,7 @@ public class Stock {
 		dividend = div;
 		currentVal = currentValue(s);
 		estimatedVal = estimValue();
-		arr = new Object[] { s, amount, currentVal, estimatedVal, costOfEquity(getBeta(s)), sharpeRatio()};
+		arr = new Object[] { s, "Amount of stocks: " + amount, "Current value of each: " + currentVal, "Estimated value of each stock: " + estimatedVal, "Cost of Equity per stock: " + costOfEquity(getBeta(s)), "Sharpe Ratio: " + sharpeRatio()};
 
 	}
 	
